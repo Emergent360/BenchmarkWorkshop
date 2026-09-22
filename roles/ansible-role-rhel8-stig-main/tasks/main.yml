@@ -3134,34 +3134,34 @@
   - low_disruption
   - no_reboot_needed
 
-- name: Configure BIND to use System Crypto Policy - Insert crypto-policy into BIND config
-  ansible.builtin.lineinfile:
-    path: /etc/named.conf
-    insertafter: ^\s*options\s*{
-    line: ' include "/etc/crypto-policies/back-ends/bind.config";'
-    state: present
-  when:
-  - DISA_STIG_RHEL_08_010275 | bool
-  - configure_bind_crypto_policy | bool
-  - configure_strategy | bool
-  - high_severity | bool
-  - low_complexity | bool
-  - low_disruption | bool
-  - no_reboot_needed | bool
-  - '"bind" in ansible_facts.packages'
-  - bind_config_file.stat.exists
-  tags:
-  - CCE-80934-3
-  - DISA-STIG-RHEL-08-010275
-  - NIST-800-53-SC-12(2)
-  - NIST-800-53-SC-12(3)
-  - NIST-800-53-SC-13
-  - configure_bind_crypto_policy
-  - configure_strategy
-  - high_severity
-  - low_complexity
-  - low_disruption
-  - no_reboot_needed
+#- name: Configure BIND to use System Crypto Policy - Insert crypto-policy into BIND config
+#  ansible.builtin.lineinfile:
+#    path: /etc/named.conf
+#    insertafter: ^\s*options\s*{
+#    line: ' include "/etc/crypto-policies/back-ends/bind.config";'
+#    state: present
+#  when:
+#  - DISA_STIG_RHEL_08_010275 | bool
+#  - configure_bind_crypto_policy | bool
+#  - configure_strategy | bool
+#  - high_severity | bool
+#  - low_complexity | bool
+#  - low_disruption | bool
+#  - no_reboot_needed | bool
+#  - '"bind" in ansible_facts.packages'
+#  - bind_config_file.stat.exists
+#  tags:
+#  - CCE-80934-3
+#  - DISA-STIG-RHEL-08-010275
+#  - NIST-800-53-SC-12(2)
+#  - NIST-800-53-SC-12(3)
+#  - NIST-800-53-SC-13
+#  - configure_bind_crypto_policy
+#  - configure_strategy
+#  - high_severity
+#  - low_complexity
+#  - low_disruption
+#  - no_reboot_needed
 
 - name: Configure System Cryptography Policy - Check current crypto policy (runtime)
   ansible.builtin.command: /usr/bin/update-crypto-policies --show
