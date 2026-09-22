@@ -34811,126 +34811,126 @@
   - no_reboot_needed
   - sssd_certificate_verification
 
-- name: Certificate status checking in SSSD - Add default domain group (if no domain there)
-  community.general.ini_file:
-    path: /etc/sssd/sssd.conf
-    section: '{{ item.section }}'
-    option: '{{ item.option }}'
-    value: '{{ item.value }}'
-    create: true
-    mode: 384
-  with_items:
-  - section: sssd
-    option: domains
-    value: default
-  - section: domain/default
-    option: id_provider
-    value: files
-  when:
-  - DISA_STIG_RHEL_08_010400 | bool
-  - configure_strategy | bool
-  - low_complexity | bool
-  - medium_disruption | bool
-  - medium_severity | bool
-  - no_reboot_needed | bool
-  - sssd_certificate_verification | bool
-  - '"sssd-common" in ansible_facts.packages'
-  - test_grep_domain.stdout is defined
-  - test_grep_domain.stdout | length < 1
-  - test_grep_domain_conf_d.stdout is defined
-  - test_grep_domain_conf_d.stdout | length < 1
-  tags:
-  - CCE-86120-3
-  - DISA-STIG-RHEL-08-010400
-  - NIST-800-53-IA-2(11)
-  - configure_strategy
-  - low_complexity
-  - medium_disruption
-  - medium_severity
-  - no_reboot_needed
-  - sssd_certificate_verification
+#- name: Certificate status checking in SSSD - Add default domain group (if no domain there)
+#  community.general.ini_file:
+#    path: /etc/sssd/sssd.conf
+#    section: '{{ item.section }}'
+#    option: '{{ item.option }}'
+#    value: '{{ item.value }}'
+#    create: true
+#    mode: 384
+#  with_items:
+#  - section: sssd
+#    option: domains
+#    value: default
+#  - section: domain/default
+#    option: id_provider
+#    value: files
+#  when:
+#  - DISA_STIG_RHEL_08_010400 | bool
+#  - configure_strategy | bool
+#  - low_complexity | bool
+#  - medium_disruption | bool
+#  - medium_severity | bool
+#  - no_reboot_needed | bool
+#  - sssd_certificate_verification | bool
+#  - '"sssd-common" in ansible_facts.packages'
+#  - test_grep_domain.stdout is defined
+#  - test_grep_domain.stdout | length < 1
+#  - test_grep_domain_conf_d.stdout is defined
+#  - test_grep_domain_conf_d.stdout | length < 1
+#  tags:
+#  - CCE-86120-3
+#  - DISA-STIG-RHEL-08-010400
+#  - NIST-800-53-IA-2(11)
+#  - configure_strategy
+#  - low_complexity
+#  - medium_disruption
+#  - medium_severity
+#  - no_reboot_needed
+#  - sssd_certificate_verification
 
-- name: Ensure that "certificate_verification" is not set in /etc/sssd/sssd.conf
-  community.general.ini_file:
-    path: /etc/sssd/sssd.conf
-    section: sssd
-    option: certificate_verification
-    state: absent
-    mode: 384
-  when:
-  - DISA_STIG_RHEL_08_010400 | bool
-  - configure_strategy | bool
-  - low_complexity | bool
-  - medium_disruption | bool
-  - medium_severity | bool
-  - no_reboot_needed | bool
-  - sssd_certificate_verification | bool
-  - '"sssd-common" in ansible_facts.packages'
-  tags:
-  - CCE-86120-3
-  - DISA-STIG-RHEL-08-010400
-  - NIST-800-53-IA-2(11)
-  - configure_strategy
-  - low_complexity
-  - medium_disruption
-  - medium_severity
-  - no_reboot_needed
-  - sssd_certificate_verification
+#- name: Ensure that "certificate_verification" is not set in /etc/sssd/sssd.conf
+#  community.general.ini_file:
+#    path: /etc/sssd/sssd.conf
+#    section: sssd
+#    option: certificate_verification
+#    state: absent
+#    mode: 384
+#  when:
+#  - DISA_STIG_RHEL_08_010400 | bool
+#  - configure_strategy | bool
+#  - low_complexity | bool
+#  - medium_disruption | bool
+#  - medium_severity | bool
+#  - no_reboot_needed | bool
+#  - sssd_certificate_verification | bool
+#  - '"sssd-common" in ansible_facts.packages'
+#  tags:
+#  - CCE-86120-3
+#  - DISA-STIG-RHEL-08-010400
+#  - NIST-800-53-IA-2(11)
+#  - configure_strategy
+#  - low_complexity
+#  - medium_disruption
+#  - medium_severity
+#  - no_reboot_needed
+#  - sssd_certificate_verification
 
-- name: Ensure that "certificate_verification" is not set in /etc/sssd/conf.d/*.conf
-  community.general.ini_file:
-    path: /etc/sssd/conf.d/*.conf
-    section: sssd
-    option: certificate_verification
-    state: absent
-    mode: 384
-  when:
-  - DISA_STIG_RHEL_08_010400 | bool
-  - configure_strategy | bool
-  - low_complexity | bool
-  - medium_disruption | bool
-  - medium_severity | bool
-  - no_reboot_needed | bool
-  - sssd_certificate_verification | bool
-  - '"sssd-common" in ansible_facts.packages'
-  tags:
-  - CCE-86120-3
-  - DISA-STIG-RHEL-08-010400
-  - NIST-800-53-IA-2(11)
-  - configure_strategy
-  - low_complexity
-  - medium_disruption
-  - medium_severity
-  - no_reboot_needed
-  - sssd_certificate_verification
+#- name: Ensure that "certificate_verification" is not set in /etc/sssd/conf.d/*.conf
+#  community.general.ini_file:
+#    path: /etc/sssd/conf.d/*.conf
+#    section: sssd
+#    option: certificate_verification
+#    state: absent
+#    mode: 384
+#  when:
+#  - DISA_STIG_RHEL_08_010400 | bool
+#  - configure_strategy | bool
+#  - low_complexity | bool
+#  - medium_disruption | bool
+#  - medium_severity | bool
+#  - no_reboot_needed | bool
+#  - sssd_certificate_verification | bool
+#  - '"sssd-common" in ansible_facts.packages'
+#  tags:
+#  - CCE-86120-3
+#  - DISA-STIG-RHEL-08-010400
+#  - NIST-800-53-IA-2(11)
+#  - configure_strategy
+#  - low_complexity
+#  - medium_disruption
+#  - medium_severity
+#  - no_reboot_needed
+#  - sssd_certificate_verification
 
-- name: Ensure that "certificate_verification" is set
-  community.general.ini_file:
-    path: /etc/sssd/conf.d/certificate_verification.conf
-    section: sssd
-    option: certificate_verification
-    value: ocsp_dgst={{ var_sssd_certificate_verification_digest_function }}
-    state: present
-    mode: 384
-  when:
-  - DISA_STIG_RHEL_08_010400 | bool
-  - configure_strategy | bool
-  - low_complexity | bool
-  - medium_disruption | bool
-  - medium_severity | bool
-  - no_reboot_needed | bool
-  - sssd_certificate_verification | bool
-  - '"sssd-common" in ansible_facts.packages'
-  tags:
-  - CCE-86120-3
-  - DISA-STIG-RHEL-08-010400
-  - NIST-800-53-IA-2(11)
-  - configure_strategy
-  - low_complexity
-  - medium_disruption
-  - medium_severity
-  - no_reboot_needed
-  - sssd_certificate_verification
+#- name: Ensure that "certificate_verification" is set
+#  community.general.ini_file:
+#    path: /etc/sssd/conf.d/certificate_verification.conf
+#    section: sssd
+#    option: certificate_verification
+#    value: ocsp_dgst={{ var_sssd_certificate_verification_digest_function }}
+#    state: present
+#    mode: 384
+#  when:
+#  - DISA_STIG_RHEL_08_010400 | bool
+#  - configure_strategy | bool
+#  - low_complexity | bool
+#  - medium_disruption | bool
+#  - medium_severity | bool
+#  - no_reboot_needed | bool
+#  - sssd_certificate_verification | bool
+#  - '"sssd-common" in ansible_facts.packages'
+#  tags:
+#  - CCE-86120-3
+#  - DISA-STIG-RHEL-08-010400
+#  - NIST-800-53-IA-2(11)
+#  - configure_strategy
+#  - low_complexity
+#  - medium_disruption
+#  - medium_severity
+#  - no_reboot_needed
+#  - sssd_certificate_verification
 
 - name: Enable Smartcards in SSSD - Ensure sssd config directory exists
   ansible.builtin.file:
@@ -35009,72 +35009,72 @@
   - no_reboot_needed
   - sssd_enable_smartcards
 
-- name: Enable Smartcards in SSSD - Add default domain group (if no domain there)
-  community.general.ini_file:
-    path: /etc/sssd/sssd.conf
-    section: '{{ item.section }}'
-    option: '{{ item.option }}'
-    value: '{{ item.value }}'
-    create: true
-    mode: 384
-  with_items:
-  - section: sssd
-    option: domains
-    value: default
-  - section: domain/default
-    option: id_provider
-    value: files
-  when:
-  - DISA_STIG_RHEL_08_020250 | bool
-  - configure_strategy | bool
-  - low_complexity | bool
-  - medium_disruption | bool
-  - medium_severity | bool
-  - no_reboot_needed | bool
-  - sssd_enable_smartcards | bool
-  - '"sssd-common" in ansible_facts.packages'
-  - test_grep_domain.stdout is defined
-  - test_grep_domain.stdout | length < 1
-  - test_grep_domain_conf_d.stdout is defined
-  - test_grep_domain_conf_d.stdout | length < 1
-  tags:
-  - CCE-80909-5
-  - DISA-STIG-RHEL-08-020250
-  - PCI-DSS-Req-8.3
-  - configure_strategy
-  - low_complexity
-  - medium_disruption
-  - medium_severity
-  - no_reboot_needed
-  - sssd_enable_smartcards
+#- name: Enable Smartcards in SSSD - Add default domain group (if no domain there)
+#  community.general.ini_file:
+#    path: /etc/sssd/sssd.conf
+#    section: '{{ item.section }}'
+#    option: '{{ item.option }}'
+#    value: '{{ item.value }}'
+#    create: true
+#    mode: 384
+#  with_items:
+#  - section: sssd
+#    option: domains
+#    value: default
+# - section: domain/default
+#    option: id_provider
+#    value: files
+#  when:
+#  - DISA_STIG_RHEL_08_020250 | bool
+#  - configure_strategy | bool
+#  - low_complexity | bool
+#  - medium_disruption | bool
+#  - medium_severity | bool
+#  - no_reboot_needed | bool
+#  - sssd_enable_smartcards | bool
+#  - '"sssd-common" in ansible_facts.packages'
+#  - test_grep_domain.stdout is defined
+#  - test_grep_domain.stdout | length < 1
+#  - test_grep_domain_conf_d.stdout is defined
+#  - test_grep_domain_conf_d.stdout | length < 1
+#  tags:
+#  - CCE-80909-5
+#  - DISA-STIG-RHEL-08-020250
+#  - PCI-DSS-Req-8.3
+#  - configure_strategy
+#  - low_complexity
+#  - medium_disruption
+#  - medium_severity
+#  - no_reboot_needed
+#  - sssd_enable_smartcards
 
-- name: Enable Smartcards in SSSD
-  community.general.ini_file:
-    path: /etc/sssd/sssd.conf
-    section: pam
-    option: pam_cert_auth
-    value: 'True'
-    create: true
-    mode: 384
-  when:
-  - DISA_STIG_RHEL_08_020250 | bool
-  - configure_strategy | bool
-  - low_complexity | bool
-  - medium_disruption | bool
-  - medium_severity | bool
-  - no_reboot_needed | bool
-  - sssd_enable_smartcards | bool
-  - '"sssd-common" in ansible_facts.packages'
-  tags:
-  - CCE-80909-5
-  - DISA-STIG-RHEL-08-020250
-  - PCI-DSS-Req-8.3
-  - configure_strategy
-  - low_complexity
-  - medium_disruption
-  - medium_severity
-  - no_reboot_needed
-  - sssd_enable_smartcards
+#- name: Enable Smartcards in SSSD
+#  community.general.ini_file:
+#    path: /etc/sssd/sssd.conf
+#    section: pam
+#    option: pam_cert_auth
+#    value: 'True'
+#    create: true
+#    mode: 384
+#  when:
+#  - DISA_STIG_RHEL_08_020250 | bool
+#  - configure_strategy | bool
+#  - low_complexity | bool
+#  - medium_disruption | bool
+#  - medium_severity | bool
+#  - no_reboot_needed | bool
+#  - sssd_enable_smartcards | bool
+#  - '"sssd-common" in ansible_facts.packages'
+#  tags:
+#  - CCE-80909-5
+#  - DISA-STIG-RHEL-08-020250
+#  - PCI-DSS-Req-8.3
+#  - configure_strategy
+#  - low_complexity
+#  - medium_disruption
+#  - medium_severity
+#  - no_reboot_needed
+#  - sssd_enable_smartcards
 
 - name: Find all the conf files inside /etc/sssd/conf.d
   ansible.builtin.find:
