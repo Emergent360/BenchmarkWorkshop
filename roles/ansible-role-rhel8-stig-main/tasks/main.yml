@@ -14684,38 +14684,38 @@
   - require_singleuser_auth
   - restrict_strategy
 
-- name: Require Authentication for Single User Mode - Require emergency user mode password
-  community.general.ini_file:
-    path: '{{ item }}'
-    section: Service
-    option: ExecStart
-    values:
-    - ''
-    - -/usr/lib/systemd/systemd-sulogin-shell rescue
-  loop: '{{ rescue_service_remediation_target_file }}'
-  when:
-  - DISA_STIG_RHEL_08_010151 | bool
-  - low_complexity | bool
-  - low_disruption | bool
-  - medium_severity | bool
-  - no_reboot_needed | bool
-  - require_singleuser_auth | bool
-  - restrict_strategy | bool
-  - '"kernel-core" in ansible_facts.packages'
-  tags:
-  - CCE-80855-0
-  - DISA-STIG-RHEL-08-010151
-  - NIST-800-171-3.1.1
-  - NIST-800-171-3.4.5
-  - NIST-800-53-AC-3
-  - NIST-800-53-CM-6(a)
-  - NIST-800-53-IA-2
-  - low_complexity
-  - low_disruption
-  - medium_severity
-  - no_reboot_needed
-  - require_singleuser_auth
-  - restrict_strategy
+#- name: Require Authentication for Single User Mode - Require emergency user mode password
+#  community.general.ini_file:
+#    path: '{{ item }}'
+#    section: Service
+#    option: ExecStart
+#    values:
+#    - ''
+#    - -/usr/lib/systemd/systemd-sulogin-shell rescue
+#  loop: '{{ rescue_service_remediation_target_file }}'
+#  when:
+#  - DISA_STIG_RHEL_08_010151 | bool
+#  - low_complexity | bool
+#  - low_disruption | bool
+#  - medium_severity | bool
+#  - no_reboot_needed | bool
+#  - require_singleuser_auth | bool
+#  - restrict_strategy | bool
+#  - '"kernel-core" in ansible_facts.packages'
+#  tags:
+#  - CCE-80855-0
+#  - DISA-STIG-RHEL-08-010151
+#  - NIST-800-171-3.1.1
+#  - NIST-800-171-3.4.5
+#  - NIST-800-53-AC-3
+#  - NIST-800-53-CM-6(a)
+#  - NIST-800-53-IA-2
+#  - low_complexity
+#  - low_disruption
+#  - medium_severity
+#  - no_reboot_needed
+#  - require_singleuser_auth
+#  - restrict_strategy
 
 - name: Set Account Expiration Following Inactivity
   ansible.builtin.lineinfile:
