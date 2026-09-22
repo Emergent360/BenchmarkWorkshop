@@ -3682,75 +3682,75 @@
   - no_reboot_needed
   - unknown_strategy
 
-- name: Disable GDM Automatic Login
-  community.general.ini_file:
-    dest: /etc/gdm/custom.conf
-    section: daemon
-    option: AutomaticLoginEnable
-    value: 'false'
-    no_extra_spaces: true
-    create: true
-    mode: 420
-  when:
-  - DISA_STIG_RHEL_08_010820 | bool
-  - gnome_gdm_disable_automatic_login | bool
-  - high_severity | bool
-  - low_complexity | bool
-  - medium_disruption | bool
-  - no_reboot_needed | bool
-  - unknown_strategy | bool
-  - '"gdm" in ansible_facts.packages'
-  tags:
-  - CCE-80823-8
-  - DISA-STIG-RHEL-08-010820
-  - NIST-800-171-3.1.1
-  - NIST-800-53-AC-6(1)
-  - NIST-800-53-CM-6(a)
-  - NIST-800-53-CM-7(b)
-  - PCI-DSSv4-8.3
-  - PCI-DSSv4-8.3.1
-  - gnome_gdm_disable_automatic_login
-  - high_severity
-  - low_complexity
-  - medium_disruption
-  - no_reboot_needed
-  - unknown_strategy
+#- name: Disable GDM Automatic Login
+#  community.general.ini_file:
+#    dest: /etc/gdm/custom.conf
+#    section: daemon
+#    option: AutomaticLoginEnable
+#    value: 'false'
+#    no_extra_spaces: true
+#    create: true
+#    mode: 420
+#  when:
+#  - DISA_STIG_RHEL_08_010820 | bool
+#  - gnome_gdm_disable_automatic_login | bool
+#  - high_severity | bool
+#  - low_complexity | bool
+#  - medium_disruption | bool
+#  - no_reboot_needed | bool
+#  - unknown_strategy | bool
+#  - '"gdm" in ansible_facts.packages'
+#  tags:
+#  - CCE-80823-8
+#  - DISA-STIG-RHEL-08-010820
+#  - NIST-800-171-3.1.1
+#  - NIST-800-53-AC-6(1)
+#  - NIST-800-53-CM-6(a)
+#  - NIST-800-53-CM-7(b)
+#  - PCI-DSSv4-8.3
+#  - PCI-DSSv4-8.3.1
+#  - gnome_gdm_disable_automatic_login
+#  - high_severity
+#  - low_complexity
+#  - medium_disruption
+#  - no_reboot_needed
+#  - unknown_strategy
 
-- name: Set GNOME3 Screensaver Inactivity Timeout
-  community.general.ini_file:
-    mode: 420
-    dest: /etc/dconf/db/local.d/00-security-settings
-    section: org/gnome/desktop/session
-    option: idle-delay
-    value: uint32 {{ inactivity_timeout_value }}
-    create: true
-    no_extra_spaces: true
-  register: result_ini
-  when:
-  - DISA_STIG_RHEL_08_020060 | bool
-  - dconf_gnome_screensaver_idle_delay | bool
-  - low_complexity | bool
-  - medium_disruption | bool
-  - medium_severity | bool
-  - no_reboot_needed | bool
-  - unknown_strategy | bool
-  - '"gdm" in ansible_facts.packages'
-  tags:
-  - CCE-80775-0
-  - CJIS-5.5.5
-  - DISA-STIG-RHEL-08-020060
-  - NIST-800-171-3.1.10
-  - NIST-800-53-AC-11(a)
-  - NIST-800-53-CM-6(a)
-  - PCI-DSS-Req-8.1.8
-  - PCI-DSSv4-8.2
-  - PCI-DSSv4-8.2.8
-  - dconf_gnome_screensaver_idle_delay
-  - low_complexity
-  - medium_disruption
-  - medium_severity
-  - no_reboot_needed
-  - unknown_strategy
+#- name: Set GNOME3 Screensaver Inactivity Timeout
+#  community.general.ini_file:
+#    mode: 420
+#    dest: /etc/dconf/db/local.d/00-security-settings
+#    section: org/gnome/desktop/session
+#    option: idle-delay
+#    value: uint32 {{ inactivity_timeout_value }}
+#    create: true
+#    no_extra_spaces: true
+#  register: result_ini
+#  when:
+#  - DISA_STIG_RHEL_08_020060 | bool
+#  - dconf_gnome_screensaver_idle_delay | bool
+#  - low_complexity | bool
+#  - medium_disruption | bool
+#  - medium_severity | bool
+#  - no_reboot_needed | bool
+#  - unknown_strategy | bool
+#  - '"gdm" in ansible_facts.packages'
+#  tags:
+#  - CCE-80775-0
+#  - CJIS-5.5.5
+#  - DISA-STIG-RHEL-08-020060
+#  - NIST-800-171-3.1.10
+#  - NIST-800-53-AC-11(a)
+#  - NIST-800-53-CM-6(a)
+#  - PCI-DSS-Req-8.1.8
+#  - PCI-DSSv4-8.2
+#  - PCI-DSSv4-8.2.8
+#  - dconf_gnome_screensaver_idle_delay
+#  - low_complexity
+#  - medium_disruption
+#  - medium_severity
+#  - no_reboot_needed
+#  - unknown_strategy
 
 - name: Dconf Update
   ansible.builtin.command: dconf update
