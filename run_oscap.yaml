@@ -17,7 +17,10 @@
 
     - block:
       - name: run openscap
-        command: oscap xccdf eval --profile xccdf_org.ssgproject.content_profile_cis_server_l1 --results /tmp/OpenScap_results_file.xml /usr/share/xml/scap/ssg/content/ssg-rhel8-ds.xml
+        command: oscap xccdf eval --profile xccdf_org.ssgproject.content_profile_stig --results /tmp/OpenScap_results_file.xml /usr/share/xml/scap/ssg/content/ssg-rhel8-ds.xml
+#        command: oscap xccdf eval --profile xccdf_org.ssgproject.content_profile_cis_server_l1 --results /tmp/OpenScap_results_file.xml /usr/share/xml/scap/ssg/content/ssg-rhel8-ds.xml
+#        oscap xccdf eval --profile xccdf_org.ssgproject.content_profile_stig --report rhel8-stig-report.html /usr/share/xml/scap/ssg/content/ssg-rhel8-ds.xml
+
         ignore_errors: yes
 
       - name: generate report
